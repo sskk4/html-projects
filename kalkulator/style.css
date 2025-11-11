@@ -1,0 +1,81 @@
+.pole2 {
+	
+	
+}
+
+.pole {
+	  border-radius: 5px;
+	padding:20px;
+	width:750px;
+	height:100px;
+	font-family:Arial;
+	font-size: 50px;
+	text-align:right;
+	border:0px;
+	background-color: #ffffff;
+filter:alpha(opacity=10);
+opacity:0.4;
+-moz-opacity:0.4;
+
+}
+
+.przycisk
+{
+	  border-radius: 5px;
+	
+	font-family: Arial;
+	font-size:50px;
+	width:121px;
+	height:121px;
+	background-color:white;
+	border: 0px;
+	filter:alpha(opacity=10);
+	opacity:0.4;
+	-moz-opacity:0.4;
+
+}
+
+.przycisk:hover
+{
+	filter:alpha(opacity=10);
+	opacity:0.6;
+	-moz-opacity:0.6;
+}
+{
+background-color:black;
+}
+#kalkulator
+{
+	color:white;
+padding: 20px;
+	background-color: black;
+	position: absolute;
+	top:60%;
+	left:50%;
+	transform: translate(-50%,-50%);
+	height: 600px;
+	width:750px;
+	padding: 15px;
+	 background-image: url("blur.jpg")
+	
+}
+#gora
+
+{
+	 background-image: url("blur1.jpg");
+		color:white;
+padding: 20px;
+	background-color: red;
+	position: absolute;
+	top:19%;
+	left:50%;
+	transform: translate(-50%,-50%);
+	height: 100px;
+	width:750px;
+	padding: 15px;
+	background-image: blur.jpg;
+}
+#main
+{
+	background-image: url("background.png");
+}

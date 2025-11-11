@@ -1,0 +1,54 @@
+.button
+{
+	margin-left:320px;
+	background-color:#06b559;
+	color:white;
+	font-size:35px;
+	cursor:pointer;
+	font-family: 'Montserrat', sans-serif;
+	font-weight:bold;
+	paddin:20px;
+	border-radius:5px;
+	border-color:#06b559;
+	transition:1s;
+}
+#pytania
+{
+	margin-left:100px;
+	text-align:justify;
+}
+
+.button2
+{
+	margin-left:auto;
+	margin-right:auto;
+	background-color:#06b559;
+	color:white;
+	font-size:15px;
+	margin-top:50px;
+	cursor:pointer;
+	font-family: 'Montserrat', sans-serif;
+	font-weight:bold;
+	border-radius:5px;
+	border-color:#06b559;
+	transition:1s;
+}
+.button2:hover
+{
+	background-color: #0b9b53;
+
+}
+.button:hover
+{
+	background-color: #0b9b53;
+
+}
+span
+{
+	line-height:30px;
+	font-weight:600;
+}
+#historia
+{
+	visibility: hidden;
+}

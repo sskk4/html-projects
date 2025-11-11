@@ -1,0 +1,73 @@
+<html>
+<head>
+<title> WOOOO </title>
+
+<style>
+*
+{
+font-family:Arial;
+padding:0;
+margin:0;
+}
+
+#strona
+{
+padding:10%;
+
+width:80%;
+height:80%;
+color:white;
+background-color:#1E90FF;
+font-family:arial;
+animation-name:animacja;
+animation-duration:2s;
+
+  animation-iteration-count: infinite;
+}
+
+#smutna
+{
+font-size:150px;
+}
+
+#error
+{
+line-height:2;
+letter-spacing:1px;
+font-stretch:extra-expanded;
+width:100%;
+padding-top:30px;
+font-size:30px;
+font-family:Lucida Console;
+}
+
+#error2
+{
+line-height:2;
+letter-spacing:0,5px;
+font-stretch:extra-expanded;
+width:100%;
+padding-top:30px;
+font-size:15px;
+}
+
+@keyframes animacja{
+0%   {background-color: black; color:black;}
+  50%  {background-color: blue;color:white;}
+75%{background-color:black; color:white;}
+100%{background-color:black; color:black;}
+}
+
+</style>
+
+</head>
+<body bgcolor="#1E90FF">
+
+<div id="strona"> 
+<div id="smutna">:(</div>
+<div id="error"> Your pc ran into a problem that it couldn't <br> handle, and now it needs to restart </div>
+<div id="error2"> You can search for the error online: HAL_INITIALIZATION_FAILED
+</div>
+
+</body>
+</html>

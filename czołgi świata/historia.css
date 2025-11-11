@@ -1,0 +1,85 @@
+#historia
+{
+	font-weight:bold;
+	font-family: 'Montserrat', sans-serif;
+	clear:both;
+	margin-top:150px;
+	width:100%;
+	text-align:center;
+}
+#zolnierz
+{
+		  animation-name: zolnierz;
+  animation-duration: 7s;
+	margin-left:-100px;
+	margin-top:-60px;
+}
+#las
+{
+	 animation-name: las;
+  animation-duration: 7s;
+	
+	clear:both;
+}
+#czolg
+{
+	
+	  animation-name: czolg;
+  animation-duration: 7s;
+margin-top:-90px;
+margin-right:-300px;
+}
+#tekst
+{
+	width:500px;
+	margin-left:auto;
+	margin-right:auto;
+}
+#czolg2
+{
+	
+	  animation-name: czolg2;
+  animation-duration: 7s;
+margin-top:-90px;
+margin-right:-380px;
+}
+.strzalka
+{
+	transition: .3s ease;
+	  animation-name: strzalka;
+  animation-duration: 10s;
+	margin-top:50px;
+	width:100px;
+}
+@keyframes zolnierz
+{
+	from {opacity:0.7; }
+  to { opacity:1; }
+}
+@keyframes czolg {
+  from {opacity:0.9; margin-right:-1000px;}
+  to { opacity:1; margin-right:-300px;}
+}
+@keyframes czolg2 {
+  from {opacity:0.9; margin-right:-1000px;}
+  to { opacity:1; margin-right:-380px;}
+}
+@keyframes las{
+	from  { opacity:0.9; margin-right:200px;}
+  to { opacity:1; margin-right:0px;}
+}
+
+@keyframes strzalka{
+  from {opacity:0;}
+  to {opacity:1;}
+}
+
+.strzalka:hover
+{
+	
+	width:120px;
+}
+#nastepne
+{
+	height:100px;
+}

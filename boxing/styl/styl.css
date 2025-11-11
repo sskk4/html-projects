@@ -1,0 +1,89 @@
+#wszystko
+{
+    font-family: Verdana;
+    width:800px;
+    min-height: 500px;
+    margin-top:30px;
+    margin-bottom:50px;
+    margin-left:auto;
+    margin-right: auto;
+}
+
+#logo
+{
+    
+    padding-left:50px;
+    width:350px;
+    height: 200px;
+    float:left;
+}
+
+#menu
+{
+    padding-top:30px;
+    padding-right:50px;
+    text-align: right;
+    float:left;
+    width:350px;
+    height:170px;
+    background-color:;
+    border-radius:3px;
+} 
+
+a
+{
+    text-decoration: none;
+    color:firebrick;
+    transition:1s;
+}
+
+a:hover
+{
+    font-size:20px;
+}
+
+#tekst
+
+{
+    clear:both;
+    padding:60px;
+    text-align: center;
+    
+}
+
+#stopka
+{
+    margin-top:50px;
+    border-top: 1px solid firebrick;
+    text-align: right;
+    font-size:10px;
+}
+
+#gozik, #gozik1
+{
+    background-color:firebrick;
+    width:200px;
+    height: 50px;
+    color:white;
+    border:1px solid white;
+    border-radius:30px;
+    transition:1s;
+    cursor:pointer;
+}
+
+#zdjecie
+{
+    transition: 1s;
+}
+
+#gozik:hover, #gozik1:hover
+{
+    background-color:crimson;
+}
+
+#zdjecie:hover
+{
+    width:250px;
+    margin-top:-50px;
+    cursor:pointer;
+}

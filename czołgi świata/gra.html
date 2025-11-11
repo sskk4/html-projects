@@ -1,0 +1,43 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<title> Czołgi świata </title>
+<meta charset="UTF-8">
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js"></script>
+<link rel="stylesheet" href="styl.css" /> <link rel="stylesheet" href="historia.css" /> <link rel="stylesheet" href="quiz.css" />
+<link href="https://fonts.googleapis.com/css?family=Montserrat:400,600,800&display=swap" rel="stylesheet">
+<script src="https://unpkg.com/scrollreveal@4"></script>
+<link rel="shortcut icon" href="favicon.ico">
+<script src="quiz.js"></script>
+</head>
+<body >
+<div id="wszystko" />
+<div id="logo" >  <img src="logo.png" width="200px" class="img"/>
+  <a href="historia.html" />  <div id="menu" class="centered"> HISTORIA</div>   </a> <a href="opisy.html"> <div id="menu">  OPISY</div> </a>  <a href="czolgi.html"><div id="menu"> HOME</div>  </a>  </div>
+ <div id="historia" ><h1 > QUIZ </h1><br>
+ 
+ <div id="koniecgry">
+ <div id="pytania">
+ <input type="button" value="ZACZYNAMY" onclick="pytania(odp0)" class="button"> </input>
+</div>
+
+<span id="n0"></span><span id="u0"></span>
+<span id="n1"></span><span id="u1"></span>
+<span id="n2"></span><span id="u2"></span>
+<span id="n3"></span><span id="u3"></span>
+<div id="przycisk" > </div>
+<div id="przycisk2" > </div>
+<br>
+Nr pytania:
+<span id="container">0</div>
+</div>
+ <div id="stopka" > <img src="copy.png" height="50px " />
+ </div>
+	</div>
+	<script>
+		ScrollReveal({  scale: 0.85,
+    duration: 1000 }).reveal('#historia' , { delay: 100 });
+	
+	</script>
+</body>
+</html>
