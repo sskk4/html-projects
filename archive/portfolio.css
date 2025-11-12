@@ -1,0 +1,354 @@
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            background: #1a1a1a;
+            color: #fff;
+            overflow-x: hidden;
+        }
+
+        /* Smooth scrolling */
+        html {
+            scroll-behavior: smooth;
+        }
+
+        /* Sekcje - każda na 100vh */
+        section {
+            min-height: 100vh;
+            display: grid;
+            padding: 2rem;
+            position: relative;
+        }
+
+        .strona1-img {
+            width: 100%;
+            border-radius: 15px;
+            margin-bottom: 1rem;
+        }
+
+        /* Strona 1 - Intro */
+        #intro {
+            grid-template-columns: repeat(5, 1fr);
+            grid-template-rows: repeat(5, 1fr);
+            gap: 1rem;
+            background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%);
+        }
+
+        .intro-title {
+            grid-area: 2 / 1 / 4 / 3;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            padding: 2rem;
+        }
+
+        .intro-title h1 {
+            font-size: 4rem;
+            background: linear-gradient(135deg, #00d4ff 0%, #0099ff 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            font-weight: bold;
+            margin-bottom: 0.5rem;
+        }
+
+        .intro-title h2 {
+            font-size: 2.5rem;
+            color: #00d4ff;
+            font-weight: 300;
+        }
+
+        .title-bar{
+            text-align: center;
+            width:100%;
+
+        }
+
+        .intro-text {
+            grid-area: 1 / 3 / 5 / 6;
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            padding: 3rem;
+            display: flex;
+            align-items: center;
+        }
+
+        .intro-text p {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            color: #e0e0e0;
+        }
+
+        .intro-image {
+            grid-area: 1 / 4 / 6 / 6;
+            background: linear-gradient(135deg, rgba(0, 212, 255, 0.1) 0%, rgba(0, 153, 255, 0.1) 100%);
+            border-radius: 20px;
+            overflow: hidden;
+            display: flex;
+            align-items: flex-end;
+            justify-content: flex-end;
+        }
+
+        .intro-image::after {
+            content: "👨‍💻";
+            font-size: 15rem;
+            opacity: 0.3;
+        }
+
+        /* Strona 2 - Projekty */
+        #projects {
+            grid-template-columns: repeat(5, 1fr);
+            grid-template-rows: repeat(5, 1fr);
+            gap: 1rem;
+            background: linear-gradient(135deg, #2d2d2d 0%, #1a1a1a 100%);
+        }
+
+        .project-card {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(10px);
+            border-radius: 15px;
+            padding: 2rem;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            cursor: pointer;
+            border: 1px solid rgba(0, 212, 255, 0.1);
+        }
+
+        .project-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0, 212, 255, 0.2);
+            border-color: rgba(0, 212, 255, 0.3);
+        }
+
+        .project-1 { grid-area: 1 / 1 / 5 / 3; }
+        .project-2 { grid-area: 3 / 1 / 6 / 3; }
+        .project-3 { grid-area: 1 / 1 / 3 / 3; }
+        .project-4 { grid-area: 2 / 3 / 5 / 6; background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 300"><rect fill="%2300d4ff" opacity="0.1" width="400" height="300"/></svg>'); background-size: cover; }
+        .project-5 { grid-area: 5 / 3 / 6 / 6; }
+
+        .project-card h3 {
+            color: #00d4ff;
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .project-card p {
+            color: #b0b0b0;
+            line-height: 1.6;
+        }
+
+        .tech-tags {
+            display: flex;
+            gap: 0.5rem;
+            margin-top: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .tech-tag {
+            background: rgba(0, 212, 255, 0.2);
+            padding: 0.3rem 0.8rem;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            color: #00d4ff;
+        }
+
+        /* Strona 3 - Light & Color */
+        #gallery {
+            grid-template-columns: repeat(5, 1fr);
+            grid-template-rows: repeat(5, 1fr);
+            gap: 1rem;
+            background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%);
+        }
+
+        .gallery-title {
+            grid-area: 2 / 1 / 5 / 5;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 6rem;
+            font-weight: bold;
+            color: rgba(255, 255, 255, 0.05);
+            text-transform: uppercase;
+            letter-spacing: 2rem;
+        }
+
+        .gallery-item {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(10px);
+            border-radius: 15px;
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
+
+        .gallery-item:hover {
+            transform: scale(1.05);
+            box-shadow: 0 10px 30px rgba(0, 212, 255, 0.3);
+        }
+
+        .gallery-1 { grid-area: 1 / 4 / 3 / 6; background: linear-gradient(135deg, #ff6b6b 0%, #ee5a6f 100%); }
+        .gallery-2 { grid-area: 4 / 2 / 6 / 5; background: linear-gradient(135deg, #4ecdc4 0%, #44a08d 100%); }
+
+        .color-wheel {
+            position: absolute;
+            right: 10%;
+            top: 30%;
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            background: conic-gradient(from 0deg, #00d4ff, #0099ff, #9b59b6, #e74c3c, #f39c12, #2ecc71, #00d4ff);
+            animation: rotate 10s linear infinite;
+            box-shadow: 0 0 50px rgba(0, 212, 255, 0.5);
+        }
+
+        @keyframes rotate {
+            100% { transform: rotate(360deg); }
+        }
+
+        /* Strona 4 - Design Grid */
+        #design {
+            grid-template-columns: repeat(5, 1fr);
+            grid-template-rows: repeat(5, 1fr);
+            gap: 1rem;
+            background: linear-gradient(135deg, #2d2d2d 0%, #1a1a1a 100%);
+        }
+
+        .design-header {
+            grid-area: 1 / 2 / 2 / 4;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .design-header h2 {
+            font-size: 4rem;
+            background: linear-gradient(135deg, #00d4ff 0%, #9b59b6 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .design-item {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(10px);
+            border-radius: 15px;
+            padding: 1.5rem;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .design-item:hover {
+            background: rgba(0, 212, 255, 0.1);
+            transform: translateY(-5px);
+            border-color: rgba(0, 212, 255, 0.3);
+        }
+
+        .design-1 { grid-area: 2 / 1 / 6 / 2; }
+        .design-2 { grid-area: 2 / 2 / 6 / 3; }
+        .design-3 { grid-area: 2 / 3 / 6 / 4; }
+        .design-4 { grid-area: 2 / 4 / 6 / 5; }
+        .design-5 { grid-area: 2 / 5 / 6 / 6; }
+
+        .design-item img {
+            max-width: 100%;
+            border-radius: 10px;
+            margin-bottom: 1rem;
+        }
+
+        .design-item h4 {
+            color: #00d4ff;
+            margin-bottom: 0.5rem;
+        }
+
+        /* Strona 5 - Kontakt/Portfolio */
+        #contact {
+            grid-template-columns: repeat(5, 1fr);
+            grid-template-rows: repeat(5, 1fr);
+            gap: 1rem;
+            background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%);
+        }
+
+        .contact-title {
+            grid-area: 1 / 1 / 3 / 3;
+            display: flex;
+            align-items: center;
+        }
+
+        .contact-title h2 {
+            font-size: 4rem;
+            background: linear-gradient(135deg, #9b59b6 0%, #00d4ff 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .contact-item {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(10px);
+            border-radius: 15px;
+            padding: 1.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .contact-item:hover {
+            background: rgba(0, 212, 255, 0.1);
+            transform: scale(1.05);
+            border-color: rgba(0, 212, 255, 0.3);
+        }
+
+        .contact-1 { grid-area: 2 / 4 / 3 / 5; }
+        .contact-2 { grid-area: 3 / 5 / 4 / 6; }
+        .contact-3 { grid-area: 4 / 4 / 5 / 5; }
+        .contact-4 { grid-area: 5 / 2 / 6 / 3; }
+        .contact-5 { grid-area: 4 / 1 / 5 / 2; }
+        .contact-6 { grid-area: 3 / 3 / 4 / 4; }
+
+        /* Scroll indicator */
+        .scroll-indicator {
+            position: fixed;
+            bottom: 2rem;
+            left: 50%;
+            transform: translateX(-50%);
+            color: #00d4ff;
+            font-size: 2rem;
+            animation: bounce 2s infinite;
+            z-index: 100;
+        }
+
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% { transform: translateX(-50%) translateY(0); }
+            40% { transform: translateX(-50%) translateY(-20px); }
+            60% { transform: translateX(-50%) translateY(-10px); }
+        }
+
+        /* Responsywność */
+        @media (max-width: 768px) {
+            section {
+                grid-template-columns: 1fr !important;
+                grid-template-rows: auto !important;
+                padding: 1rem;
+            }
+
+            .intro-title h1 { font-size: 2.5rem; }
+            .intro-title h2 { font-size: 1.5rem; }
+            
+            div[class*="grid-area"] {
+                grid-area: auto !important;
+            }
+
+            .color-wheel {
+                width: 100px;
+                height: 100px;
+            }
+        }
+
+        
