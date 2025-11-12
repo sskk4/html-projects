@@ -7,148 +7,154 @@
 	<meta name="description" content="PIXELART" />
 	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
 	
+	<!-- Ruffle Flash Emulator -->
+	<script src="https://unpkg.com/@ruffle-rs/ruffle"></script>
+	
 	<style>
-	#container
-	{
+	body {
+		margin: 0;
+		padding: 0;
+	}
+	
+	#container {
 		width: 1000px;
 		margin-left: auto;
 		margin-right: auto;
 	}
-	#logo
-	{
-	width: 1000px;
-	text-align: left;
+	
+	#logo {
+		width: 1000px;
+		text-align: left;
 		background-color: red;
 		color: white;
 		padding: 15px;
 	}
-	#co
-	{
-		float: up;
-		text-align: center;
-		
-	}
-		#co2
-	{
-		float: up;
-		text-align: center;
 	
+	#co {
+		float: up;
+		text-align: center;
+	}
+	
+	#co2 {
+		float: up;
+		text-align: center;
 	}
 
-	#hehe
-	{
+	#hehe {
 		padding: 15px;
 		background-color: red;
 		float: up;
 		width: 1000px;
-		
-		
 	}
 
-.przyklad{
+	.przyklad {
+		overflow: hidden;
+		padding: 15px;
+		width: 1000px;
+		height: 20px;
+		background-color: red;
+	}
 	
-    overflow: hidden;
-    padding: 15px;
-    width: 1000px;
-    height: 20px;
-    background-color: red;
-
-}
-.przyklad img {
-    transition-duration: 3s;
-    margin: 0 auto;
-    display: block;
-}
-.przyklad img:hover {
-    transform: scale(1.2);
-    -webkit-transform: scale(1.2);
-    -moz-transform: scale(1.2);
-    z-index: 0;
-}
-	#hehe2
-	{
-		
+	.przyklad img {
+		transition-duration: 3s;
+		margin: 0 auto;
+		display: block;
+	}
+	
+	.przyklad img:hover {
+		transform: scale(1.2);
+		-webkit-transform: scale(1.2);
+		-moz-transform: scale(1.2);
+		z-index: 0;
+	}
+	
+	#hehe2 {
 		float: up;
-		background-color:red;
+		background-color: red;
 		padding: 15px;
 		width: 1000px;
 		min-height: 300px;
-		
 	}
-	#hehe3
-	{
-	   both: clear;
-float: up;
-	   width: 1000px;
-	   min-height: 30px;
+	
+	#hehe3 {
+		both: clear;
+		float: up;
+		width: 1000px;
+		min-height: 30px;
 	}
-	#hehe4
-	{
-	  float: left;
-	  width: 1000px;
-	  background-color:red;
-	  padding: 15px;
-	  
+	
+	#hehe4 {
+		float: left;
+		width: 1000px;
+		background-color: red;
+		padding: 15px;
 	}
-		#hehe5
-	{
-	   both: clear;
-float: up;
-	   width: 1000px;
-	   min-height: 30px;
+	
+	#hehe5 {
+		both: clear;
+		float: up;
+		width: 1000px;
+		min-height: 30px;
 	}
-	{
-
+	
+	/* Stylowanie dla Ruffle */
+	#game-container {
+		width: 490px;
+		height: 350px;
+		margin: 0 auto;
+	}
+	
+	#game-container embed {
+		width: 100%;
+		height: 100%;
+	}
 	</style>
 
 </head>
 
 <body>
-<body background="ha" />
 	<div id="container">
 	
 		<div id="logo">
-		<a href=roksa.html />	<img src="logo.png" />
-		 </a> 
+			<a href="roksa.html"><img src="logo.png" alt="Logo" /></a> 
 		</div>
+		
 		<div id="co2">
-		 <center> <img src="lol.gif" width=442 height=232 /> 
+			<center><img src="lol.gif" width="442" height="232" alt="Animation" /></center>
 		</div>
+		
 		<div id="co">
-		<center>
-	
-		</center>
+			<center></center>
 		</div>
-		<br /> <br /> <br />
+		
+		<br /><br /><br />
 	
-	
-
-<div class="przyklad">
-     <a href="top.html" />  <img src="logo2.png" alt="powiekszaj±cy siê obrazek" width="189" height="20" class="alignleft size-medium wp-image-7000" align="left" /> </a>
-       <img src="logo4.png" alt="powiekszaj±cy siê obrazek" width="134" height="20" class="aligncleft size-medium wp-image-7000" align="right" />
-       
-       <img src="logo3.png" alt="powiekszaj±cy siê obrazek" width="141" height="20" class="alignleft size-medium wp-image-7000" aling= />
-  	   </div>
-  	   
+		<div class="przyklad">
+			<a href="top.html"><img src="logo2.png" alt="Top" width="189" height="20" class="alignleft size-medium wp-image-7000" align="left" /></a>
+			<img src="logo4.png" alt="Menu" width="134" height="20" class="aligncleft size-medium wp-image-7000" align="right" />
+			<img src="logo3.png" alt="Info" width="141" height="20" class="alignleft size-medium wp-image-7000" />
+		</div>
   	   
 		<div id="hehe3">
-	<a href=inne.html />	<center>  </center> </a>
+			<a href="inne.html"><center></center></a>
 		</div>
 		
 		<div id="hehe2">
-		
-		<center> <embed src="gry/373.swf" width="490" height="350" /> </center> 
-		
-	
-
+			<center>
+				<div id="game-container">
+					<embed src="gry/373.swf" width="490" height="350" />
+				</div>
+			</center>
 		</div>
-  <br /> <br /> 
-	<div id="hehe4">
-<center>	<p><font face="Arial" color=white /> <b> COPYRIGHT MLODY G  </font> </b> </center>
 		
+		<br /><br /> 
+		
+		<div id="hehe4">
+			<center><p><font face="Arial" color="white"><b>COPYRIGHT MLODY G</b></font></p></center>
 		</div>
+		
 		<div id="hehe5">
-		<center> <font color=white /> dzien dobry </font> </center> 
+			<center><font color="white">dzien dobry</font></center> 
 		</div>
 
 	</div>

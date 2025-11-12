@@ -1,0 +1,13 @@
+https://sskk4.github.io/html-projects/boxing/index.html
+https://sskk4.github.io/html-projects/czo%C5%82gi%20%C5%9Bwiata/czolgi.html
+https://sskk4.github.io/html-projects/motoryzacja/motoryzacja.html
+https://sskk4.github.io/html-projects/lab1/index.html
+https://sskk4.github.io/html-projects/witryna%20sprzeda%C5%BCy%20obraz%C3%B3w/index.html
+https://sskk4.github.io/html-projects/samochody/index.html
+https://sskk4.github.io/html-projects/kalkulator/kalkulator.html
+https://sskk4.github.io/html-projects/portoflio/index.html
+https://sskk4.github.io/html-projects/strona/index.html
+https://sskk4.github.io/html-projects/strona%20z%20grami/roksa.html
+https://sskk4.github.io/html-projects/bluescreen.html
+https://sskk4.github.io/html-projects/gra.html
+https://sskk4.github.io/html-projects/odwrocony%20kolko%20i%20krzyzyk.html
