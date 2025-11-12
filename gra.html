@@ -1,395 +1,305 @@
-
+<!DOCTYPE html>
 <html>
 <head>
-
     <style>
-
-
-
-        #play_button:hover
-        {
-            background-color:lightseagreen;
-        }
-        #play_button
-        {   border-radius:10%;
-            width:200px;
-            height: 72px;
-            padding:10px;
-            font-family:VCR OSD Mono;
-            cursor:pointer;
-            text-align: center;
-            font-size: 72px;
-            background-color:seagreen;
-            border:2px solid black;
-            margin-left:auto;
-            margin-right: auto;
-            margin-top:50px;
-
-        }
-        #all
-        {
-            top: 20%;
-        left: 50%;
-        transform: translate(-50%, -20%);
-            position:fixed;
-            z-index:250;
-            margin-left:auto;
-            margin-right: auto;
-            width:500px;
-            height: 500px;
-            border:1px solid black;
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
         }
 
-        #all_enemy
-        {
-            top: 20%;
-        left: 50%;
-        transform: translate(-50%, -20%);
-            z-index:200;
-            position:fixed;
-            width:500px;
-            height: 500px;
-            
+        body {
+            overflow: hidden;
+            background: #1a1a2e;
+            font-family: Arial, sans-serif;
         }
 
-        #character
-        { z-index:250;
-            position:relative;
-            width:50px;
-            height: 50px;
-            border:1px solid seagreen;
-            background-color:darkseagreen;
+        #play_button {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 200px;
+            height: 80px;
+            font-size: 32px;
+            background-color: seagreen;
+            color: white;
+            border: 3px solid black;
+            border-radius: 10px;
+            cursor: pointer;
+            z-index: 300;
+            transition: all 0.3s;
+        }
+
+        #play_button:hover {
+            background-color: lightseagreen;
+            transform: translate(-50%, -50%) scale(1.1);
+        }
+
+        #game_container {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 600px;
+            height: 600px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            border: 4px solid #fff;
+            border-radius: 20px;
+            box-shadow: 0 0 30px rgba(0,0,0,0.5);
+            overflow: hidden;
+            cursor: crosshair;
+        }
+
+        #character {
+            position: absolute;
+            width: 40px;
+            height: 40px;
+            background: radial-gradient(circle at 30% 30%, #90EE90, darkseagreen);
+            border: 3px solid seagreen;
             border-radius: 50%;
-          top:0px;
-          left:0px;
+            z-index: 100;
+            transition: transform 0.1s;
+            box-shadow: 0 0 15px rgba(0,255,0,0.5);
         }
 
-        #range
-        { z-index:200;
-            position:relative;
+        .enemy {
+            position: absolute;
+            width: 35px;
+            height: 35px;
+            border-radius: 50%;
+            border: 2px solid rgba(0,0,0,0.3);
+            z-index: 50;
+            transition: all 0.2s;
+            box-shadow: 0 0 10px rgba(0,0,0,0.3);
         }
 
-        .enemy
-        {
-            z-index:200px;
-            position:fixed;
-            width:30px;
-            height: 30px;
-            background-color:darkslateblue;
-            border-radius:50%;
+        .explosion {
+            position: absolute;
+            border: 3px solid #ff6b6b;
+            background: radial-gradient(circle, rgba(255,107,107,0.3), transparent);
+            border-radius: 50%;
+            z-index: 150;
+            pointer-events: none;
+            animation: explode 0.5s ease-out forwards;
         }
 
+        @keyframes explode {
+            0% {
+                transform: scale(0);
+                opacity: 1;
+            }
+            100% {
+                transform: scale(1);
+                opacity: 0;
+            }
+        }
+
+        #score {
+            position: fixed;
+            top: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            color: white;
+            font-size: 24px;
+            font-weight: bold;
+            z-index: 200;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+        }
+
+        #game_over {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: rgba(0,0,0,0.9);
+            padding: 40px;
+            border-radius: 20px;
+            text-align: center;
+            color: white;
+            z-index: 300;
+            display: none;
+        }
+
+        #game_over h1 {
+            font-size: 48px;
+            margin-bottom: 20px;
+            color: #ff6b6b;
+        }
+
+        #restart_button {
+            margin-top: 20px;
+            padding: 15px 40px;
+            font-size: 20px;
+            background-color: seagreen;
+            color: white;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        #restart_button:hover {
+            background-color: lightseagreen;
+            transform: scale(1.1);
+        }
     </style>
-    <title> gra </title>
 </head>
-
 <body>
-
+    <button id="play_button" onclick="startGame()">PLAY</button>
+    <div id="score" style="display:none;">Punkty: <span id="score_value">0</span></div>
+    <div id="game_container" style="display:none;"></div>
     
-<div id="all"> <div id="play_button" onclick="play()"> PLAY </div></div>
-<div id="all_enemy"> </div>
-
+    <div id="game_over">
+        <h1>GAME OVER</h1>
+        <p style="font-size: 24px;">Twój wynik: <span id="final_score">0</span></p>
+        <button id="restart_button" onclick="startGame()">ZAGRAJ PONOWNIE</button>
+    </div>
 
     <script>
+        const container = document.getElementById('game_container');
+        const scoreDisplay = document.getElementById('score_value');
+        let character, enemies = [], gameLoop, enemySpawnInterval;
+        let characterX = 280, characterY = 280;
+        let score = 0;
+        let gameRunning = false;
 
-var start_position=225;
-    var x=225;
-    var y=225; 
-    
-    var move_action="";
+        function startGame() {
+            document.getElementById('play_button').style.display = 'none';
+            document.getElementById('game_over').style.display = 'none';
+            document.getElementById('game_container').style.display = 'block';
+            document.getElementById('score').style.display = 'block';
+            
+            container.innerHTML = '';
+            enemies = [];
+            score = 0;
+            scoreDisplay.textContent = score;
+            characterX = 280;
+            characterY = 280;
+            gameRunning = true;
 
+            character = document.createElement('div');
+            character.id = 'character';
+            character.style.left = characterX + 'px';
+            character.style.top = characterY + 'px';
+            container.appendChild(character);
 
-function play()
-{
+            container.addEventListener('mousemove', handleMouseMove);
+            container.addEventListener('click', handleClick);
 
-    document.getElementById("all").innerHTML="";
-    spawn_enemy();
-   
- 
-    
-    
-
-    document.getElementById("all").innerHTML+="<div id='character'></div>"
-    document.getElementById("all").innerHTML+="<div id='range'></div>"
-    
-    const character=document.getElementById("character");
-    const range=document.getElementById("range");
-
-  
-   
-
-    character.style.top="225px";
-    character.style.left="225px";
-
-
-
-//CHODZENIE
-    
-    document.addEventListener('keydown', function(event) {
-    if(event.keyCode == 37) { //lewo 
-        
-move_action="left";
-
-        if(character.style.left=="5px")
-        {
-        }
-        else
-        {
-            x=x-10;
-       character.style.left=x+"px";
-        }
-       
-    }
-    else if(event.keyCode == 39) { //prawo
-       
-        move_action="right";
-        
-        if(character.style.left=="445px")
-        {
-        }
-        else
-        {
-            x=x+10;
-       character.style.left=x+"px";
-        }
-    }
-    else if(event.keyCode == 38) { //gora
-
-        move_action="up";
-        
-        if(character.style.top=="5px")
-        {
-        }
-        else
-        {
-            y=y-10;
-       character.style.top=y+"px";
-        }
-    }
-    else if(event.keyCode == 40) { //dol
-
-        move_action="down";
-        
-        if(character.style.top=="445px")
-        {
-        }
-        else
-        {
-            y=y+10;
-       character.style.top=y+"px";
-        }
-    }
-
-  
-   
-})
-   
-
-//ATAK
-
-document.addEventListener('keydown', function(event){
- 
-    if(event.keyCode == 32)
-    {
-        
-        character.style.backgroundColor="red";
-        range.style.backgroundColor="red";
-
-
-        if(move_action=="right")
-        {
-           
-            innerHTML=""
-        range.style.width=75+"px";
-        range.style.height=100+"px";
-        range.style.left=x+25;
-        range.style.top=y-75;
-        
+            enemySpawnInterval = setInterval(spawnEnemy, 1500);
+            gameLoop = setInterval(updateGame, 1000/60);
         }
 
-        else if(move_action=="left")
-        {
-        range.style.width=75+"px";
-        range.style.height=100+"px";
-        range.style.left=x-50;
-        range.style.top=y-75;
-       
+        function handleMouseMove(e) {
+            if (!gameRunning) return;
+            const rect = container.getBoundingClientRect();
+            const targetX = e.clientX - rect.left - 20;
+            const targetY = e.clientY - rect.top - 20;
+
+            characterX += (targetX - characterX) * 0.15;
+            characterY += (targetY - characterY) * 0.15;
+
+            characterX = Math.max(0, Math.min(560, characterX));
+            characterY = Math.max(0, Math.min(560, characterY));
+
+            character.style.left = characterX + 'px';
+            character.style.top = characterY + 'px';
         }
 
-        else if(move_action=="up")
-        {
-            range.style.width=100+"px";
-        range.style.height=75+"px";
-        range.style.left=x-25;
-        range.style.top=y-100;
-       
+        function handleClick(e) {
+            if (!gameRunning) return;
+            const rect = container.getBoundingClientRect();
+            const clickX = e.clientX - rect.left;
+            const clickY = e.clientY - rect.top;
+
+            const explosion = document.createElement('div');
+            explosion.className = 'explosion';
+            explosion.style.width = '200px';
+            explosion.style.height = '200px';
+            explosion.style.left = (clickX - 100) + 'px';
+            explosion.style.top = (clickY - 100) + 'px';
+            container.appendChild(explosion);
+
+            setTimeout(() => explosion.remove(), 500);
+
+            enemies = enemies.filter(enemy => {
+                const ex = parseFloat(enemy.element.style.left) + 17.5;
+                const ey = parseFloat(enemy.element.style.top) + 17.5;
+                const dist = Math.sqrt((ex - clickX)**2 + (ey - clickY)**2);
+                
+                if (dist < 100) {
+                    enemy.element.style.transform = 'scale(0)';
+                    setTimeout(() => enemy.element.remove(), 200);
+                    score += 10;
+                    scoreDisplay.textContent = score;
+                    return false;
+                }
+                return true;
+            });
         }
 
-        else if(move_action=="down")
-        {
-    
-            range.style.width=100+"px";
-        range.style.height=75+"px";
-        range.style.left=x-25;
-        range.style.top=y-25;
-       
+        function spawnEnemy() {
+            if (!gameRunning) return;
+            
+            const enemy = document.createElement('div');
+            enemy.className = 'enemy';
+            
+            const side = Math.floor(Math.random() * 4);
+            let x, y;
+            
+            switch(side) {
+                case 0: x = Math.random() * 560; y = -35; break;
+                case 1: x = Math.random() * 560; y = 600; break;
+                case 2: x = -35; y = Math.random() * 560; break;
+                case 3: x = 600; y = Math.random() * 560; break;
+            }
+            
+            enemy.style.left = x + 'px';
+            enemy.style.top = y + 'px';
+            
+            const colors = ['#FF6B6B', '#4ECDC4', '#45B7D1', '#FFA07A', '#98D8C8', '#F7DC6F'];
+            enemy.style.background = `radial-gradient(circle at 30% 30%, ${colors[Math.floor(Math.random() * colors.length)]}, ${colors[Math.floor(Math.random() * colors.length)]})`;
+            
+            container.appendChild(enemy);
+            enemies.push({ element: enemy, x, y });
         }
 
-       
-    }
+        function updateGame() {
+            if (!gameRunning) return;
 
-})
+            enemies.forEach(enemy => {
+                const dx = (characterX + 20) - (enemy.x + 17.5);
+                const dy = (characterY + 20) - (enemy.y + 17.5);
+                const dist = Math.sqrt(dx*dx + dy*dy);
+                
+                if (dist > 0) {
+                    const speed = 2;
+                    enemy.x += (dx / dist) * speed;
+                    enemy.y += (dy / dist) * speed;
+                    enemy.element.style.left = enemy.x + 'px';
+                    enemy.element.style.top = enemy.y + 'px';
+                }
 
-document.addEventListener('keyup', function(event){
- 
- if(event.keyCode == 32)
- {
-    
-    character.style.backgroundColor="red";
-        range.style.left=0;
-        range.style.top=0;
-        range.style.width=0+"px";
-        range.style.height=0+"px";
-        range.style.backgroundColor="white";
-     character.style.backgroundColor="darkseagreen";
- }
+                const collisionDist = Math.sqrt(
+                    ((characterX + 20) - (enemy.x + 17.5))**2 + 
+                    ((characterY + 20) - (enemy.y + 17.5))**2
+                );
+                
+                if (collisionDist < 30) {
+                    endGame();
+                }
+            });
+        }
 
-})
-
-
-
-}
-
-
-
-// przeciwnicy ruch i spawn
-enemy_number=0;
-var enemy_x = new Array();
-var enemy_y = new Array();
-var dx = new Array();
-var dy = new Array();
-var length = new Array();
-var how_many_enemies=0;
-var enemies_max=5;
-
-
-
-//losowanie pozycji przeciwnikow
-
-    for(var i=0;i<enemies_max;i++)
-{
-var random_y= Math.floor(Math.random() *(20 +400 ));
-var random_x= Math.floor(Math.random() *( 2 + 40));
-if(random_y>250)
-{
-random_y=0;
-}
-else
-{
-    random_y=450;
-}
-enemy_x[i]=random_x*10;
-enemy_y[i]=random_y;
-dx[i]=0;
-dy[i]=0;
-length[i]=0;
-}
-
-
-
-function spawn_enemy()
-{
-
- 
-setTimeout(spawn_enemy,"1");
-    
-if(how_many_enemies==enemies_max)
-{
-    
-}
-else if(how_many_enemies==2)
-{
-    document.getElementById("all_enemy").innerHTML+="<div class='enemy' id='enemy"+enemy_number+"'></div>"
-    setTimeout(move_enemy,"500");
-    how_many_enemies++;
-}
-else
-{
-    document.getElementById("all_enemy").innerHTML+="<div class='enemy' id='enemy"+enemy_number+"'></div>"
-    var colorHex = `#${Math.floor(Math.random()*16777215).toString(16)}`;
-    document.getElementById("enemy"+enemy_number).setAttribute('style', 'background-color:' +colorHex+'; border:1px solid')
-    how_many_enemies++;
-}
-
-var enemy=document.getElementById("enemy"+enemy_number);
-
-if(enemy_number==enemies_max)
-{
- enemy_number=0;
-}
-    else
-    {
-        move_enemy();
-   
-        var enemy=document.getElementById("enemy"+enemy_number);
-    
-        
-    }
-
-
-
-function move_enemy()
-   {
-
- enemy_number++;
-
-
- if(enemy_number==enemies_max)
-{
- enemy_number=0;
-}
-
-    if(enemy_x==470)
-    {
-
-    }
-    else
-    {
-    dx[enemy_number]=x-enemy_x[enemy_number];
-    dy[enemy_number]=y-enemy_y[enemy_number];
-
-var dt= 1/60;
-var speed=50;
-        
-
-//console.log("wrog nr: "+enemy_number+" length: "+length[enemy_number]+" dx: "+dx[enemy_number]+" dy: "+" enemy_x: "+enemy_x[enemy_number]+" enemy_y: "+enemy_y[enemy_number])
-
-   length[enemy_number]=Math.sqrt(dx[enemy_number]*dx[enemy_number]+dy[enemy_number]*dy[enemy_number]);
-    
-    enemy_x[enemy_number]=enemy_x[enemy_number]+dt*dx[enemy_number]*speed/length[enemy_number];
-    enemy_y[enemy_number]=enemy_y[enemy_number]+dt*dy[enemy_number]*speed/length[enemy_number];
-    enemy.style.left=Math.round(enemy_x[enemy_number])+10;
-    enemy.style.top=Math.round(enemy_y[enemy_number])+10;  
-    }
-
-   }
-
-function colision()
-{
-
-    
-}
-
-}
-
-
-
-
-
-
-
-
+        function endGame() {
+            gameRunning = false;
+            clearInterval(gameLoop);
+            clearInterval(enemySpawnInterval);
+            
+            document.getElementById('final_score').textContent = score;
+            document.getElementById('game_over').style.display = 'block';
+        }
     </script>
 </body>
-
 </html>
