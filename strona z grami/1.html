@@ -6,117 +6,125 @@
 	<link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
 	<meta name="description" content="PIXELART" />
 	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
-	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 	
 	<!-- Ruffle Flash Emulator -->
 	<script src="https://unpkg.com/@ruffle-rs/ruffle"></script>
 	
 	<style>
-	* {
-		box-sizing: border-box;
-	}
-	
 	body {
 		margin: 0;
 		padding: 0;
-		font-family: Arial, sans-serif;
 	}
 	
 	#container {
-		max-width: 1000px;
-		margin: 0 auto;
-		padding: 0 10px;
+		width: 1000px;
+		margin-left: auto;
+		margin-right: auto;
 	}
 	
 	#logo {
+		width: 1000px;
+		text-align: left;
 		background-color: red;
 		color: white;
 		padding: 15px;
 	}
 	
-	#logo img {
-		max-width: 100%;
-		height: auto;
+	#co {
+		float: up;
+		text-align: center;
 	}
 	
 	#co2 {
+		float: up;
 		text-align: center;
-		padding: 10px 0;
 	}
-	
-	#co2 img {
-		max-width: 100%;
-		height: auto;
+
+	#hehe {
+		padding: 15px;
+		background-color: red;
+		float: up;
+		width: 1000px;
 	}
 
 	.przyklad {
 		overflow: hidden;
 		padding: 15px;
+		width: 1000px;
+		height: 20px;
 		background-color: red;
-		display: flex;
-		justify-content: space-between;
-		align-items: center;
 	}
 	
 	.przyklad img {
-		transition-duration: 0.3s;
-		max-width: 30%;
-		height: auto;
+		transition-duration: 3s;
+		margin: 0 auto;
+		display: block;
 	}
 	
 	.przyklad img:hover {
 		transform: scale(1.2);
+		-webkit-transform: scale(1.2);
+		-moz-transform: scale(1.2);
+		z-index: 0;
 	}
 	
 	#hehe2 {
+		float: up;
 		background-color: red;
 		padding: 15px;
+		width: 1000px;
 		min-height: 300px;
 	}
 	
+	#hehe3 {
+		both: clear;
+		float: up;
+		width: 1000px;
+		min-height: 30px;
+	}
+	
 	#hehe4 {
+		float: left;
+		width: 1000px;
 		background-color: red;
 		padding: 15px;
-		text-align: center;
 	}
 	
 	#hehe5 {
+		both: clear;
+		float: up;
+		width: 1000px;
 		min-height: 30px;
-		text-align: center;
-		padding: 10px;
 	}
 	
-	/* Stylowanie dla Ruffle */
-	#game-container {
-		width: 100%;
-		max-width: 490px;
-		height: 350px;
-		margin: 0 auto 20px;
-		position: relative;
-		background-color: #000;
-	}
-	
-	ruffle-player {
-		width: 100%;
-		height: 100%;
-		display: block;
-	}
-	
-	/* Wirtualny kontroler dla telefonu */
+	/* Wirtualny kontroler na dole strony */
 	#mobile-controls {
-		display: none;
-		max-width: 490px;
-		margin: 0 auto 20px;
+		width: 1000px;
+		margin: 20px auto;
 		padding: 20px;
 		background-color: #333;
 		border-radius: 10px;
 	}
 	
+	.controls-title {
+		color: white;
+		text-align: center;
+		font-size: 18px;
+		font-weight: bold;
+		margin-bottom: 15px;
+	}
+	
+	.control-layout {
+		display: flex;
+		justify-content: space-around;
+		align-items: center;
+	}
+	
 	.control-pad {
 		display: grid;
-		grid-template-columns: repeat(3, 1fr);
-		gap: 10px;
-		margin-bottom: 20px;
+		grid-template-columns: repeat(3, 70px);
+		grid-template-rows: repeat(3, 70px);
+		gap: 5px;
 	}
 	
 	.control-btn {
@@ -124,14 +132,16 @@
 		color: white;
 		border: 2px solid #777;
 		border-radius: 8px;
-		padding: 20px;
-		font-size: 18px;
+		font-size: 24px;
 		font-weight: bold;
 		touch-action: none;
 		user-select: none;
 		-webkit-user-select: none;
 		cursor: pointer;
 		transition: all 0.1s;
+		display: flex;
+		align-items: center;
+		justify-content: center;
 	}
 	
 	.control-btn:active {
@@ -146,7 +156,6 @@
 	
 	.action-buttons {
 		display: flex;
-		justify-content: center;
 		gap: 20px;
 	}
 	
@@ -155,15 +164,20 @@
 		color: white;
 		border: 2px solid #f00;
 		border-radius: 50%;
-		width: 80px;
-		height: 80px;
-		font-size: 16px;
+		width: 90px;
+		height: 90px;
+		font-size: 14px;
 		font-weight: bold;
 		touch-action: none;
 		user-select: none;
 		-webkit-user-select: none;
 		cursor: pointer;
 		transition: all 0.1s;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		text-align: center;
+		line-height: 1.2;
 	}
 	
 	.action-btn:active {
@@ -174,25 +188,6 @@
 	.action-btn.pressed {
 		background-color: #ff0;
 		transform: scale(0.95);
-	}
-	
-	.controls-info {
-		background-color: #ffcccc;
-		padding: 10px;
-		margin: 10px 0;
-		border-radius: 5px;
-		text-align: center;
-	}
-	
-	/* Responsive */
-	@media (max-width: 768px) {
-		#mobile-controls {
-			display: block;
-		}
-		
-		#game-container {
-			height: 280px;
-		}
 	}
 	</style>
 
@@ -206,86 +201,116 @@
 		</div>
 		
 		<div id="co2">
-			<img src="lol.gif" width="442" height="232" alt="Animation" />
+			<center><img src="lol.gif" width="442" height="232" alt="Animation" /></center>
 		</div>
 		
-		<br />
+		<div id="co">
+			<center></center>
+		</div>
+		
+		<br /><br /><br />
 	
 		<div class="przyklad">
-			<a href="top.html"><img src="logo2.png" alt="Top" /></a>
-			<img src="logo4.png" alt="Menu" />
-			<img src="logo3.png" alt="Info" />
+			<a href="top.html"><img src="logo2.png" alt="Top" width="189" height="20" class="alignleft size-medium wp-image-7000" align="left" /></a>
+			<img src="logo4.png" alt="Menu" width="134" height="20" class="aligncleft size-medium wp-image-7000" align="right" />
+			<img src="logo3.png" alt="Info" width="141" height="20" class="alignleft size-medium wp-image-7000" />
 		</div>
-		
-		<div class="controls-info">
-			<strong>Sterowanie:</strong><br>
-			🖥️ PC: Strzałki + Spacja/Enter<br>
-			📱 Telefon: Użyj przycisków poniżej gry
+  	   
+		<div id="hehe3">
+			<a href="inne.html"><center></center></a>
 		</div>
 		
 		<div id="hehe2">
-			<div id="game-container">
+			<center>
 				<embed src="gry/373.swf" width="490" height="350" />
-			</div>
-			
-			<!-- Wirtualny kontroler dla telefonu -->
-			<div id="mobile-controls">
+			</center>
+		</div>
+		
+		<br /><br /> 
+		
+		<div id="hehe4">
+			<center><p><font face="Arial" color="white"><b>COPYRIGHT MLODY G</b></font></p></center>
+		</div>
+		
+		<div id="hehe5">
+			<center><font color="white">dzien dobry</font></center> 
+		</div>
+		
+		<!-- Wirtualny kontroler na dole strony -->
+		<div id="mobile-controls">
+			<div class="controls-title">🎮 STEROWANIE MOBILNE 🎮</div>
+			<div class="control-layout">
+				<!-- Pad kierunkowy -->
 				<div class="control-pad">
 					<div></div>
 					<button class="control-btn" data-key="ArrowUp">↑</button>
 					<div></div>
 					<button class="control-btn" data-key="ArrowLeft">←</button>
-					<button class="control-btn" data-key="ArrowDown">↓</button>
+					<div></div>
 					<button class="control-btn" data-key="ArrowRight">→</button>
+					<div></div>
+					<button class="control-btn" data-key="ArrowDown">↓</button>
+					<div></div>
 				</div>
 				
+				<!-- Przyciski akcji -->
 				<div class="action-buttons">
 					<button class="action-btn" data-key=" ">SKOK<br>(Spacja)</button>
 					<button class="action-btn" data-key="Enter">START<br>(Enter)</button>
 				</div>
 			</div>
 		</div>
-		
-		<br /><br /> 
-		
-		<div id="hehe4">
-			<p><font face="Arial" color="white"><b>COPYRIGHT MLODY G</b></font></p>
-		</div>
-		
-		<div id="hehe5">
-			<font color="white">dzien dobry</font>
-		</div>
 
 	</div>
 
 	<script>
 		// Poczekaj aż Ruffle automatycznie załaduje embed
+		let rufflePlayer = null;
+		
 		window.addEventListener("load", () => {
 			// Daj Ruffle chwilę na inicjalizację
 			setTimeout(() => {
-				const player = document.querySelector("ruffle-player") || document.querySelector("embed");
-				if (player) {
-					player.style.outline = "none";
-					if (player.focus) player.focus();
+				rufflePlayer = document.querySelector("ruffle-player") || document.querySelector("embed");
+				if (rufflePlayer) {
+					rufflePlayer.style.outline = "none";
+					if (rufflePlayer.focus) rufflePlayer.focus();
 				}
 			}, 500);
 		});
 		
 		// Funkcja do symulacji naciśnięcia klawisza
 		function simulateKeyPress(key, eventType) {
+			// Wyślij do ruffle-player
 			const player = document.querySelector("ruffle-player") || document.querySelector("embed");
-			if (!player) return;
+			if (player) {
+				const event = new KeyboardEvent(eventType, {
+					key: key,
+					code: key === " " ? "Space" : key === "Enter" ? "Enter" : key.replace("Arrow", ""),
+					keyCode: getKeyCode(key),
+					which: getKeyCode(key),
+					charCode: getKeyCode(key),
+					bubbles: true,
+					cancelable: true,
+					view: window
+				});
+				
+				player.dispatchEvent(event);
+			}
 			
-			const event = new KeyboardEvent(eventType, {
+			// Wyślij też do document i window
+			const docEvent = new KeyboardEvent(eventType, {
 				key: key,
 				code: key === " " ? "Space" : key === "Enter" ? "Enter" : key.replace("Arrow", ""),
 				keyCode: getKeyCode(key),
 				which: getKeyCode(key),
+				charCode: getKeyCode(key),
 				bubbles: true,
-				cancelable: true
+				cancelable: true,
+				view: window
 			});
 			
-			player.dispatchEvent(event);
+			document.dispatchEvent(docEvent);
+			window.dispatchEvent(docEvent);
 		}
 		
 		function getKeyCode(key) {
@@ -300,53 +325,97 @@
 			return keyCodes[key] || 0;
 		}
 		
+		// Zarządzanie aktywnymi klawiszami
+		let activeKeys = new Set();
+		
+		function pressKey(key) {
+			if (activeKeys.has(key)) return;
+			activeKeys.add(key);
+			
+			simulateKeyPress(key, "keydown");
+			
+			// Upewnij się że gracz ma fokus
+			const player = document.querySelector("ruffle-player") || document.querySelector("embed");
+			if (player && player.focus) {
+				player.focus();
+			}
+		}
+		
+		function releaseKey(key) {
+			activeKeys.delete(key);
+			simulateKeyPress(key, "keyup");
+		}
+		
 		// Obsługa wirtualnych przycisków
 		const buttons = document.querySelectorAll(".control-btn, .action-btn");
 		
 		buttons.forEach(button => {
-			// Obsługa dotyku (touchstart/touchend)
+			// Obsługa dotyku
 			button.addEventListener("touchstart", (e) => {
 				e.preventDefault();
+				e.stopPropagation();
 				const key = button.getAttribute("data-key");
 				button.classList.add("pressed");
-				simulateKeyPress(key, "keydown");
+				pressKey(key);
 			});
 			
 			button.addEventListener("touchend", (e) => {
 				e.preventDefault();
+				e.stopPropagation();
 				const key = button.getAttribute("data-key");
 				button.classList.remove("pressed");
-				simulateKeyPress(key, "keyup");
+				releaseKey(key);
 			});
 			
-			// Obsługa myszy (dla testowania na PC)
-			button.addEventListener("mousedown", (e) => {
+			button.addEventListener("touchcancel", (e) => {
 				e.preventDefault();
 				const key = button.getAttribute("data-key");
+				button.classList.remove("pressed");
+				releaseKey(key);
+			});
+			
+			// Obsługa myszy
+			button.addEventListener("mousedown", (e) => {
+				e.preventDefault();
+				e.stopPropagation();
+				const key = button.getAttribute("data-key");
 				button.classList.add("pressed");
-				simulateKeyPress(key, "keydown");
+				pressKey(key);
 			});
 			
 			button.addEventListener("mouseup", (e) => {
 				e.preventDefault();
+				e.stopPropagation();
 				const key = button.getAttribute("data-key");
 				button.classList.remove("pressed");
-				simulateKeyPress(key, "keyup");
+				releaseKey(key);
+			});
+			
+			button.addEventListener("mouseleave", (e) => {
+				const key = button.getAttribute("data-key");
+				button.classList.remove("pressed");
+				releaseKey(key);
 			});
 			
 			// Zapobiegaj domyślnym akcjom
 			button.addEventListener("touchmove", (e) => {
 				e.preventDefault();
 			});
+			
+			button.addEventListener("contextmenu", (e) => {
+				e.preventDefault();
+			});
 		});
 		
 		// Automatyczne ustawienie fokusa na grze po kliknięciu
 		document.addEventListener("DOMContentLoaded", () => {
-			const gameContainer = document.getElementById("game-container");
-			gameContainer.addEventListener("click", () => {
-				const player = document.querySelector("ruffle-player") || document.querySelector("embed");
-				if (player && player.focus) player.focus();
-			});
+			const embed = document.querySelector("embed");
+			if (embed) {
+				embed.addEventListener("click", () => {
+					const player = document.querySelector("ruffle-player") || document.querySelector("embed");
+					if (player && player.focus) player.focus();
+				});
+			}
 		});
 	</script>
 
