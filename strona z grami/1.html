@@ -97,77 +97,104 @@
 		min-height: 30px;
 	}
 	
-	/* Wirtualny kontroler na dole strony */
+	/* Retro kontroler na dole strony */
 	#mobile-controls {
-		width: 1000px;
-		margin: 20px auto;
-		padding: 20px;
-		background-color: #333;
-		border-radius: 10px;
+
+
 	}
 	
 	.controls-title {
-		color: white;
+		color: #ff0000;
 		text-align: center;
-		font-size: 18px;
+		font-size: 24px;
 		font-weight: bold;
-		margin-bottom: 15px;
+		margin-bottom: 25px;
+		text-shadow: 2px 2px 4px rgba(0,0,0,0.8), 0 0 10px rgba(255,0,0,0.5);
+		letter-spacing: 3px;
 	}
 	
 	.control-layout {
 		display: flex;
-		justify-content: space-around;
+		justify-content: space-between;
 		align-items: center;
+		padding: 0 40px;
 	}
 	
-	.control-pad {
-		display: grid;
-		grid-template-columns: repeat(3, 70px);
-		grid-template-rows: repeat(3, 70px);
-		gap: 5px;
+	/* Joystick style */
+	.joystick-container {
+		position: relative;
+		width: 220px;
+		height: 220px;
 	}
 	
-	.control-btn {
-		background-color: #555;
-		color: white;
-		border: 2px solid #777;
-		border-radius: 8px;
-		font-size: 24px;
-		font-weight: bold;
+	.joystick-base {
+		position: absolute;
+		width: 220px;
+		height: 220px;
+		background: radial-gradient(circle, #333 0%, #1a1a1a 70%);
+		border: 6px solid #555;
+		border-radius: 50%;
+		box-shadow: 
+			inset 0 0 20px rgba(0,0,0,0.8),
+			inset 0 0 40px rgba(0,0,0,0.4),
+			0 4px 8px rgba(0,0,0,0.6);
+	}
+	
+	.joystick-stick {
+		position: absolute;
+		width: 100px;
+		height: 100px;
+		background: radial-gradient(circle at 30% 30%, #666, #2a2a2a);
+		border: 4px solid #444;
+		border-radius: 50%;
+		top: 50%;
+		left: 50%;
+		transform: translate(-50%, -50%);
+		box-shadow: 
+			0 6px 12px rgba(0,0,0,0.6),
+			inset 0 -2px 4px rgba(0,0,0,0.5),
+			inset 0 2px 4px rgba(255,255,255,0.1);
+		cursor: pointer;
 		touch-action: none;
 		user-select: none;
 		-webkit-user-select: none;
-		cursor: pointer;
-		transition: all 0.1s;
+		transition: all 0.1s ease;
+	}
+	
+	.joystick-stick:active {
+		box-shadow: 
+			0 2px 4px rgba(0,0,0,0.8),
+			inset 0 -2px 4px rgba(0,0,0,0.7),
+			inset 0 2px 4px rgba(255,255,255,0.05);
+	}
+	
+	.joystick-stick.active {
+		background: radial-gradient(circle at 30% 30%, #888, #3a3a3a);
+	}
+	
+	/* Przyciski akcji po prawej */
+	.action-buttons {
 		display: flex;
-		align-items: center;
+		flex-direction: column;
+		gap: 15px;
+	}
+	
+	.action-row {
+		display: flex;
+		gap: 15px;
 		justify-content: center;
 	}
 	
-	.control-btn:active {
-		background-color: #00ff00;
-		transform: scale(0.95);
-	}
-	
-	.control-btn.pressed {
-		background-color: #00ff00;
-		transform: scale(0.95);
-	}
-	
-	.action-buttons {
-		display: flex;
-		gap: 20px;
-	}
-	
 	.action-btn {
-		background-color: #c00;
-		color: white;
-		border: 2px solid #f00;
-		border-radius: 50%;
-		width: 90px;
-		height: 90px;
-		font-size: 14px;
+		background: linear-gradient(145deg, #8a0000, #c00000);
+		color: #fff;
+		border: 4px solid #600;
+		border-radius: 12px;
+		width: 95px;
+		height: 80px;
+		font-size: 18px;
 		font-weight: bold;
+		font-family: 'Courier New', monospace;
 		touch-action: none;
 		user-select: none;
 		-webkit-user-select: none;
@@ -177,17 +204,88 @@
 		align-items: center;
 		justify-content: center;
 		text-align: center;
-		line-height: 1.2;
+		box-shadow: 
+			0 6px 0 #400,
+			0 8px 12px rgba(0,0,0,0.5),
+			inset 0 2px 4px rgba(255,255,255,0.2);
+		text-shadow: 1px 1px 2px rgba(0,0,0,0.8);
 	}
 	
-	.action-btn:active {
-		background-color: #ff0;
-		transform: scale(0.95);
-	}
-	
+	.action-btn:active,
 	.action-btn.pressed {
-		background-color: #ff0;
-		transform: scale(0.95);
+		background: linear-gradient(145deg, #ffcc00, #ff9900);
+		transform: translateY(4px);
+		box-shadow: 
+			0 2px 0 #cc6600,
+			0 4px 8px rgba(0,0,0,0.5),
+			inset 0 2px 4px rgba(255,255,255,0.3);
+		border-color: #cc6600;
+	}
+	
+	.action-btn.start-btn {
+		background: linear-gradient(145deg, #006600, #009900);
+		border-color: #004400;
+		box-shadow: 
+			0 6px 0 #004400,
+			0 8px 12px rgba(0,0,0,0.5),
+			inset 0 2px 4px rgba(255,255,255,0.2);
+	}
+	
+	.action-btn.space-btn {
+		background: linear-gradient(145deg, #666600, #999900);
+		border-color: #444400;
+		width: 205px;
+		box-shadow: 
+			0 6px 0 #444400,
+			0 8px 12px rgba(0,0,0,0.5),
+			inset 0 2px 4px rgba(255,255,255,0.2);
+	}
+	
+	.action-btn.start-btn:active,
+	.action-btn.start-btn.pressed {
+		background: linear-gradient(145deg, #00ff00, #00cc00);
+		border-color: #009900;
+		box-shadow: 
+			0 2px 0 #009900,
+			0 4px 8px rgba(0,0,0,0.5),
+			inset 0 2px 4px rgba(255,255,255,0.3);
+	}
+	
+	.action-btn.space-btn:active,
+	.action-btn.space-btn.pressed {
+		background: linear-gradient(145deg, #ffff00, #cccc00);
+		border-color: #999900;
+		box-shadow: 
+			0 2px 0 #999900,
+			0 4px 8px rgba(0,0,0,0.5),
+			inset 0 2px 4px rgba(255,255,255,0.3);
+	}
+	
+	/* Dekoracyjne elementy */
+	.joystick-base::before {
+		content: '';
+		position: absolute;
+		width: 140px;
+		height: 140px;
+		border: 2px dashed #444;
+		border-radius: 50%;
+		top: 50%;
+		left: 50%;
+		transform: translate(-50%, -50%);
+		opacity: 0.3;
+	}
+	
+	.joystick-base::after {
+		content: '';
+		position: absolute;
+		width: 100px;
+		height: 100px;
+		border: 2px dashed #555;
+		border-radius: 50%;
+		top: 50%;
+		left: 50%;
+		transform: translate(-50%, -50%);
+		opacity: 0.2;
 	}
 	</style>
 
@@ -228,35 +326,33 @@
 		
 		<br /><br /> 
 		
-		<div id="hehe4">
-			<center><p><font face="Arial" color="white"><b>COPYRIGHT MLODY G</b></font></p></center>
-		</div>
-		
+
 		<div id="hehe5">
 			<center><font color="white">dzien dobry</font></center> 
 		</div>
 		
-		<!-- Wirtualny kontroler na dole strony -->
+		<!-- Retro kontroler na dole strony -->
 		<div id="mobile-controls">
-			<div class="controls-title">🎮 STEROWANIE MOBILNE 🎮</div>
 			<div class="control-layout">
-				<!-- Pad kierunkowy -->
-				<div class="control-pad">
-					<div></div>
-					<button class="control-btn" data-key="ArrowUp">↑</button>
-					<div></div>
-					<button class="control-btn" data-key="ArrowLeft">←</button>
-					<div></div>
-					<button class="control-btn" data-key="ArrowRight">→</button>
-					<div></div>
-					<button class="control-btn" data-key="ArrowDown">↓</button>
-					<div></div>
+				<!-- Joystick -->
+				<div class="joystick-container">
+					<div class="joystick-base"></div>
+					<div class="joystick-stick" id="joystick"></div>
 				</div>
 				
 				<!-- Przyciski akcji -->
 				<div class="action-buttons">
-					<button class="action-btn" data-key=" ">SKOK<br>(Spacja)</button>
-					<button class="action-btn" data-key="Enter">START<br>(Enter)</button>
+					<div class="action-row">
+						<button class="action-btn" data-key="z">Z</button>
+						<button class="action-btn" data-key="x">X</button>
+					</div>
+					<div class="action-row">
+						<button class="action-btn" data-key="c">C</button>
+						<button class="action-btn start-btn" data-key="Enter">START</button>
+					</div>
+					<div class="action-row">
+						<button class="action-btn space-btn" data-key=" ">SPACE</button>
+					</div>
 				</div>
 			</div>
 		</div>
@@ -268,7 +364,6 @@
 		let rufflePlayer = null;
 		
 		window.addEventListener("load", () => {
-			// Daj Ruffle chwilę na inicjalizację
 			setTimeout(() => {
 				rufflePlayer = document.querySelector("ruffle-player") || document.querySelector("embed");
 				if (rufflePlayer) {
@@ -280,15 +375,14 @@
 		
 		// Funkcja do symulacji naciśnięcia klawisza
 		function simulateKeyPress(key, eventType) {
-			// Wyślij do ruffle-player
 			const player = document.querySelector("ruffle-player") || document.querySelector("embed");
 			if (player) {
 				const event = new KeyboardEvent(eventType, {
 					key: key,
-					code: key === " " ? "Space" : key === "Enter" ? "Enter" : key.replace("Arrow", ""),
-					keyCode: getKeyCode(key),
-					which: getKeyCode(key),
-					charCode: getKeyCode(key),
+					code: getKeyCode(key).code,
+					keyCode: getKeyCode(key).keyCode,
+					which: getKeyCode(key).keyCode,
+					charCode: getKeyCode(key).keyCode,
 					bubbles: true,
 					cancelable: true,
 					view: window
@@ -297,13 +391,12 @@
 				player.dispatchEvent(event);
 			}
 			
-			// Wyślij też do document i window
 			const docEvent = new KeyboardEvent(eventType, {
 				key: key,
-				code: key === " " ? "Space" : key === "Enter" ? "Enter" : key.replace("Arrow", ""),
-				keyCode: getKeyCode(key),
-				which: getKeyCode(key),
-				charCode: getKeyCode(key),
+				code: getKeyCode(key).code,
+				keyCode: getKeyCode(key).keyCode,
+				which: getKeyCode(key).keyCode,
+				charCode: getKeyCode(key).keyCode,
 				bubbles: true,
 				cancelable: true,
 				view: window
@@ -315,14 +408,17 @@
 		
 		function getKeyCode(key) {
 			const keyCodes = {
-				"ArrowUp": 38,
-				"ArrowDown": 40,
-				"ArrowLeft": 37,
-				"ArrowRight": 39,
-				" ": 32,
-				"Enter": 13
+				"ArrowUp": { keyCode: 38, code: "ArrowUp" },
+				"ArrowDown": { keyCode: 40, code: "ArrowDown" },
+				"ArrowLeft": { keyCode: 37, code: "ArrowLeft" },
+				"ArrowRight": { keyCode: 39, code: "ArrowRight" },
+				"z": { keyCode: 90, code: "KeyZ" },
+				"x": { keyCode: 88, code: "KeyX" },
+				"c": { keyCode: 67, code: "KeyC" },
+				" ": { keyCode: 32, code: "Space" },
+				"Enter": { keyCode: 13, code: "Enter" }
 			};
-			return keyCodes[key] || 0;
+			return keyCodes[key] || { keyCode: 0, code: "" };
 		}
 		
 		// Zarządzanie aktywnymi klawiszami
@@ -334,7 +430,6 @@
 			
 			simulateKeyPress(key, "keydown");
 			
-			// Upewnij się że gracz ma fokus
 			const player = document.querySelector("ruffle-player") || document.querySelector("embed");
 			if (player && player.focus) {
 				player.focus();
@@ -346,11 +441,129 @@
 			simulateKeyPress(key, "keyup");
 		}
 		
-		// Obsługa wirtualnych przycisków
-		const buttons = document.querySelectorAll(".control-btn, .action-btn");
+		// Obsługa Joysticka
+		const joystick = document.getElementById('joystick');
+		const joystickBase = joystick.parentElement;
+		let isDragging = false;
+		let currentDirection = null;
 		
-		buttons.forEach(button => {
-			// Obsługa dotyku
+		const maxDistance = 60; // Maksymalna odległość od środka
+		const deadZone = 15; // Strefa martwa
+		
+		function handleJoystickMove(clientX, clientY) {
+			const rect = joystickBase.getBoundingClientRect();
+			const centerX = rect.left + rect.width / 2;
+			const centerY = rect.top + rect.height / 2;
+			
+			let deltaX = clientX - centerX;
+			let deltaY = clientY - centerY;
+			
+			const distance = Math.sqrt(deltaX * deltaX + deltaY * deltaY);
+			
+			if (distance > maxDistance) {
+				const angle = Math.atan2(deltaY, deltaX);
+				deltaX = Math.cos(angle) * maxDistance;
+				deltaY = Math.sin(angle) * maxDistance;
+			}
+			
+			joystick.style.transform = `translate(calc(-50% + ${deltaX}px), calc(-50% + ${deltaY}px))`;
+			
+			// Określ kierunek
+			let newDirection = null;
+			
+			if (distance > deadZone) {
+				const angle = Math.atan2(deltaY, deltaX) * 180 / Math.PI;
+				
+				if (angle >= -45 && angle < 45) {
+					newDirection = 'right';
+				} else if (angle >= 45 && angle < 135) {
+					newDirection = 'down';
+				} else if (angle >= -135 && angle < -45) {
+					newDirection = 'up';
+				} else {
+					newDirection = 'left';
+				}
+				
+				joystick.classList.add('active');
+			} else {
+				joystick.classList.remove('active');
+			}
+			
+			// Zarządzaj klawiszami
+			if (newDirection !== currentDirection) {
+				// Zwolnij stary kierunek
+				if (currentDirection) {
+					releaseKey('Arrow' + currentDirection.charAt(0).toUpperCase() + currentDirection.slice(1));
+				}
+				
+				// Naciśnij nowy kierunek
+				if (newDirection) {
+					pressKey('Arrow' + newDirection.charAt(0).toUpperCase() + newDirection.slice(1));
+				}
+				
+				currentDirection = newDirection;
+			}
+		}
+		
+		function resetJoystick() {
+			isDragging = false;
+			joystick.style.transform = 'translate(-50%, -50%)';
+			joystick.classList.remove('active');
+			
+			if (currentDirection) {
+				releaseKey('Arrow' + currentDirection.charAt(0).toUpperCase() + currentDirection.slice(1));
+				currentDirection = null;
+			}
+		}
+		
+		// Touch events dla joysticka
+		joystick.addEventListener('touchstart', (e) => {
+			e.preventDefault();
+			isDragging = true;
+			const touch = e.touches[0];
+			handleJoystickMove(touch.clientX, touch.clientY);
+		});
+		
+		document.addEventListener('touchmove', (e) => {
+			if (isDragging) {
+				e.preventDefault();
+				const touch = e.touches[0];
+				handleJoystickMove(touch.clientX, touch.clientY);
+			}
+		});
+		
+		document.addEventListener('touchend', (e) => {
+			if (isDragging) {
+				e.preventDefault();
+				resetJoystick();
+			}
+		});
+		
+		// Mouse events dla joysticka
+		joystick.addEventListener('mousedown', (e) => {
+			e.preventDefault();
+			isDragging = true;
+			handleJoystickMove(e.clientX, e.clientY);
+		});
+		
+		document.addEventListener('mousemove', (e) => {
+			if (isDragging) {
+				e.preventDefault();
+				handleJoystickMove(e.clientX, e.clientY);
+			}
+		});
+		
+		document.addEventListener('mouseup', (e) => {
+			if (isDragging) {
+				e.preventDefault();
+				resetJoystick();
+			}
+		});
+		
+		// Obsługa przycisków akcji
+		const actionButtons = document.querySelectorAll(".action-btn");
+		
+		actionButtons.forEach(button => {
 			button.addEventListener("touchstart", (e) => {
 				e.preventDefault();
 				e.stopPropagation();
@@ -374,7 +587,6 @@
 				releaseKey(key);
 			});
 			
-			// Obsługa myszy
 			button.addEventListener("mousedown", (e) => {
 				e.preventDefault();
 				e.stopPropagation();
@@ -397,7 +609,6 @@
 				releaseKey(key);
 			});
 			
-			// Zapobiegaj domyślnym akcjom
 			button.addEventListener("touchmove", (e) => {
 				e.preventDefault();
 			});
@@ -419,5 +630,8 @@
 		});
 	</script>
 
+
+	<!-- Uniwersalne sterowanie -->
+	<script src="../game-controls.js"></script>
 </body>
 </html>
