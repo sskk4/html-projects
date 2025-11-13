@@ -225,7 +225,7 @@
 		
 		<div id="hehe2">
 			<div id="game-container">
-				<ruffle-player id="ruffle-player"></ruffle-player>
+				<embed src="gry/373.swf" width="490" height="350" />
 			</div>
 			
 			<!-- Wirtualny kontroler dla telefonu -->
@@ -259,25 +259,21 @@
 	</div>
 
 	<script>
-		// Inicjalizacja Ruffle
-		window.RufflePlayer = window.RufflePlayer || {};
+		// Poczekaj aż Ruffle automatycznie załaduje embed
 		window.addEventListener("load", () => {
-			const ruffle = window.RufflePlayer.newest();
-			const player = ruffle.createPlayer();
-			const container = document.getElementById("ruffle-player");
-			container.appendChild(player);
-			
-			// Załaduj grę
-			player.load("gry/373.swf");
-			
-			// Upewnij się, że gracz może otrzymywać fokus
-			player.style.outline = "none";
-			player.tabIndex = 0;
+			// Daj Ruffle chwilę na inicjalizację
+			setTimeout(() => {
+				const player = document.querySelector("ruffle-player") || document.querySelector("embed");
+				if (player) {
+					player.style.outline = "none";
+					if (player.focus) player.focus();
+				}
+			}, 500);
 		});
 		
 		// Funkcja do symulacji naciśnięcia klawisza
 		function simulateKeyPress(key, eventType) {
-			const player = document.querySelector("ruffle-player");
+			const player = document.querySelector("ruffle-player") || document.querySelector("embed");
 			if (!player) return;
 			
 			const event = new KeyboardEvent(eventType, {
@@ -348,8 +344,8 @@
 		document.addEventListener("DOMContentLoaded", () => {
 			const gameContainer = document.getElementById("game-container");
 			gameContainer.addEventListener("click", () => {
-				const player = document.querySelector("ruffle-player");
-				if (player) player.focus();
+				const player = document.querySelector("ruffle-player") || document.querySelector("embed");
+				if (player && player.focus) player.focus();
 			});
 		});
 	</script>
