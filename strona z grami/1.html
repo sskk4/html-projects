@@ -2,9 +2,10 @@
 <html lang="pl">
 <head>
 	<meta charset="utf-8" />
-	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 	<title>SONIC</title>
 	<link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+	<meta name="description" content="PIXELART" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
 	
 	<!-- Ruffle Flash Emulator -->
 	<script src="https://unpkg.com/@ruffle-rs/ruffle"></script>
@@ -16,149 +17,96 @@
 	}
 	
 	#container {
-		width: 100%;
-		max-width: 1000px;
-		margin: 0 auto;
+		width: 1000px;
+		margin-left: auto;
+		margin-right: auto;
 	}
 	
 	#logo {
-		width: 100%;
+		width: 1000px;
 		text-align: left;
 		background-color: red;
 		color: white;
 		padding: 15px;
-		box-sizing: border-box;
 	}
 	
-	#logo img {
-		max-width: 100%;
-		height: auto;
+	#co {
+		float: up;
+		text-align: center;
 	}
 	
 	#co2 {
+		float: up;
 		text-align: center;
-		padding: 10px;
 	}
-	
-	#co2 img {
-		max-width: 100%;
-		height: auto;
+
+	#hehe {
+		padding: 15px;
+		background-color: red;
+		float: up;
+		width: 1000px;
 	}
 
 	.przyklad {
 		overflow: hidden;
 		padding: 15px;
-		width: 100%;
+		width: 1000px;
+		height: 20px;
 		background-color: red;
-		box-sizing: border-box;
 	}
 	
 	.przyklad img {
-		transition-duration: 0.3s;
-		max-width: 30%;
-		height: auto;
+		transition-duration: 3s;
+		margin: 0 auto;
+		display: block;
 	}
 	
 	.przyklad img:hover {
-		transform: scale(1.1);
+		transform: scale(1.2);
+		-webkit-transform: scale(1.2);
+		-moz-transform: scale(1.2);
+		z-index: 0;
 	}
 	
 	#hehe2 {
+		float: up;
 		background-color: red;
 		padding: 15px;
-		width: 100%;
-		box-sizing: border-box;
-		position: relative;
+		width: 1000px;
+		min-height: 300px;
 	}
 	
+	#hehe3 {
+		both: clear;
+		float: up;
+		width: 1000px;
+		min-height: 30px;
+	}
+	
+	#hehe4 {
+		float: left;
+		width: 1000px;
+		background-color: red;
+		padding: 15px;
+	}
+	
+	#hehe5 {
+		both: clear;
+		float: up;
+		width: 1000px;
+		min-height: 30px;
+	}
+	
+	/* Stylowanie dla Ruffle */
 	#game-container {
-		width: 100%;
-		max-width: 490px;
+		width: 490px;
 		height: 350px;
 		margin: 0 auto;
-		position: relative;
 	}
 	
 	#game-container embed {
 		width: 100%;
 		height: 100%;
-	}
-	
-	/* Niewidzialne pole do wywołania klawiatury */
-	#keyboard-trigger {
-		position: absolute;
-		top: 0;
-		left: 0;
-		width: 100%;
-		height: 100%;
-		opacity: 0;
-		z-index: 10;
-		font-size: 16px; /* Zapobiega zoom na iOS */
-	}
-	
-	/* Przycisk do wywołania klawiatury (mobilne) */
-	#show-keyboard-btn {
-		display: none;
-		position: fixed;
-		bottom: 20px;
-		right: 20px;
-		background: #ff0000;
-		color: white;
-		border: 3px solid white;
-		padding: 15px 25px;
-		border-radius: 50px;
-		font-size: 18px;
-		font-weight: bold;
-		z-index: 1000;
-		box-shadow: 0 4px 10px rgba(0,0,0,0.3);
-		cursor: pointer;
-	}
-	
-	/* Ostrzeżenie mobilne */
-	#mobile-info {
-		display: none;
-		background: #ffeb3b;
-		color: #333;
-		padding: 15px;
-		text-align: center;
-		font-weight: bold;
-		border: 3px solid #ff0000;
-		margin: 10px;
-	}
-	
-	#hehe4 {
-		width: 100%;
-		background-color: red;
-		padding: 15px;
-		box-sizing: border-box;
-		text-align: center;
-		color: white;
-	}
-	
-	#hehe5 {
-		width: 100%;
-		padding: 15px;
-		text-align: center;
-		color: white;
-	}
-	
-	/* Responsywność */
-	@media (max-width: 768px) {
-		#show-keyboard-btn {
-			display: block;
-		}
-		
-		#mobile-info {
-			display: block;
-		}
-		
-		#game-container {
-			height: 250px;
-		}
-		
-		.przyklad {
-			height: auto;
-		}
 	}
 	</style>
 
@@ -171,82 +119,45 @@
 			<a href="roksa.html"><img src="logo.png" alt="Logo" /></a> 
 		</div>
 		
-		<!-- Info dla mobilnych -->
-		<div id="mobile-info">
-			📱 Kliknij czerwony przycisk w prawym dolnym rogu, aby otworzyć klawiaturę!
-		</div>
-		
 		<div id="co2">
 			<center><img src="lol.gif" width="442" height="232" alt="Animation" /></center>
 		</div>
 		
-		<br /><br />
+		<div id="co">
+			<center></center>
+		</div>
+		
+		<br /><br /><br />
 	
 		<div class="przyklad">
-			<a href="top.html"><img src="logo2.png" alt="Top" /></a>
-			<img src="logo4.png" alt="Menu" />
-			<img src="logo3.png" alt="Info" />
+			<a href="top.html"><img src="logo2.png" alt="Top" width="189" height="20" class="alignleft size-medium wp-image-7000" align="left" /></a>
+			<img src="logo4.png" alt="Menu" width="134" height="20" class="aligncleft size-medium wp-image-7000" align="right" />
+			<img src="logo3.png" alt="Info" width="141" height="20" class="alignleft size-medium wp-image-7000" />
+		</div>
+  	   
+		<div id="hehe3">
+			<a href="inne.html"><center></center></a>
 		</div>
 		
 		<div id="hehe2">
 			<center>
 				<div id="game-container">
-					<!-- Niewidzialne pole tekstowe do klawiatury -->
-					<input type="text" id="keyboard-trigger" autocomplete="off" />
 					<embed src="gry/373.swf" width="490" height="350" />
 				</div>
 			</center>
 		</div>
 		
-		<!-- Przycisk do wywołania klawiatury (mobilne) -->
-		<button id="show-keyboard-btn" onclick="showKeyboard()">⌨️</button>
-		
 		<br /><br /> 
 		
 		<div id="hehe4">
-			<p><b>COPYRIGHT MLODY G</b></p>
+			<center><p><font face="Arial" color="white"><b>COPYRIGHT MLODY G</b></font></p></center>
 		</div>
 		
 		<div id="hehe5">
-			dzien dobry
+			<center><font color="white">dzien dobry</font></center> 
 		</div>
 
 	</div>
-
-	<script>
-		// Wykryj urządzenie mobilne
-		const isMobile = /Android|iPhone|iPad|iPod/i.test(navigator.userAgent);
-		
-		if (isMobile) {
-			const input = document.getElementById('keyboard-trigger');
-			
-			// Funkcja do pokazania klawiatury
-			window.showKeyboard = function() {
-				input.focus();
-			};
-			
-			// Automatycznie pokaż klawiaturę po kliknięciu w grę
-			document.getElementById('game-container').addEventListener('click', function() {
-				input.focus();
-			});
-			
-			// Przekaż klawisze do gry
-			input.addEventListener('keydown', function(e) {
-				// Nie blokuj domyślnego zachowania
-				console.log('Klawisz:', e.key);
-			});
-			
-			// Zapobiegaj ukrywaniu się klawiatury
-			input.addEventListener('blur', function() {
-				// Opcjonalnie: automatycznie przywróć focus
-				// setTimeout(() => input.focus(), 100);
-			});
-		} else {
-			// Na desktopie ukryj przycisk i info
-			document.getElementById('show-keyboard-btn').style.display = 'none';
-			document.getElementById('mobile-info').style.display = 'none';
-		}
-	</script>
 
 </body>
 </html>
